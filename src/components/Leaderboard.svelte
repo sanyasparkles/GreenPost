@@ -11,38 +11,46 @@
     
    
   
-    function compareByPoints(a, b) {
-        return a.points - b.points;
-    }
 
 
-    $: if ($profiles !== null) {
+
+    $:  { if ($profiles !== null) {
+        
         items = Object.keys($profiles).map(
             (key) => { return [key, $profiles[key]] });
+       
 
         items.sort(
-            (first, second) => { return first[1] - second[1] }
+            (first, second) => { return  second[1].points - first[1].points}
         );
 
         keys = items.map(
             (e) => { return e[0] });
-    }
+    } }
 
-    $: $profiles.sort(compareByPoints)
+
+    // $: {
+    //     if ()
+    // }
+   
 
 
 </script>
   
   
-{#if $profiles !== null}
-<ul>
-    {#each keys as bee}
-        {#if bee !== "0"}
-            <p>{bee}    {$profiles[bee].points}</p>
-        {/if}
-    {/each}
-</ul>
-{/if}
+<div>
+    {#if $profiles !== null}
+    <ul>
+        {#each keys as bee}
+            {#if bee !== "0"}
+                <p>{bee}    {$profiles[bee].points}</p>
+
+            {/if}
+        {/each}
+    </ul>
+    {/if}
+
+</div>
   
   
   <style>

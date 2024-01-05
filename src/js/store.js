@@ -27,3 +27,18 @@ export function addProfile(name, point) {
       return dictionary;
     });
   }
+
+  export function addPoints(name) {
+    console.log("here")
+    // console.log("profiles is ", profiles)
+    profiles.update(dictionary => {
+      if (dictionary[name]) {
+        dictionary[name].points += 100;
+        console.log("ADDED POINTS")
+      }
+      else {
+        console.log(name, " is name which is not found")
+      }
+      return dictionary;
+    });
+  }

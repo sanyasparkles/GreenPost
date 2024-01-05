@@ -1,11 +1,11 @@
 <script>
     import { onMount } from 'svelte';
     import {questions} from '../js/questions.js'
-    import {stopTimer, guessedBool, quizOver, profiles, name, showHome, showAnnouncements, showQuiz, addProfile, showLeaderboard} from '../js/store.js'
+    import {addPoints, stopTimer, guessedBool, quizOver, profiles, name, showHome, showAnnouncements, showQuiz, addProfile, showLeaderboard} from '../js/store.js'
     import CircleProgressBar from './CircleProgressBar.svelte';
 
     let currQuestion, timer, numRight = 0, numWrong = 0, questionNumber = 0, question
-    let guessedAnswer
+    let guessedAnswer = ""
     let iconA = "", iconB = "", iconC = "", iconD = ""
 
     newQuestion()
@@ -19,7 +19,7 @@
 
     $: {
         if ($guessedBool) {
-            $guessedAnswer = "time up"
+            guessedAnswer = "time up"
         }
     }
     
@@ -29,6 +29,10 @@
     }
 
     function newQuestion() {
+        iconA = ""
+        iconB = ""
+        iconC = ""
+        iconD = ""
         $stopTimer = false;
         questionNumber++;
         currQuestion = getRandomQuestion()
@@ -37,6 +41,9 @@
 
 
 
+    $: {
+        console.log("profiles is ", $profiles)
+    }
 
 
 
@@ -46,11 +53,17 @@
         if (guessedAns === currQuestion.correct) {
             console.log('correct')  
             numRight++;
-            $profiles[$name].points += 100;
+            console.log("Naame winneer is ", $name)
+            // console.log("points num is ", $profiles[$name].points)
+            addPoints($name)
+            // $profiles[$name].points += 100;
+            
         }
         else {
             numWrong++;
         }
+
+        console.log("guessedans is: ", guessedAns)
         switch(guessedAns) {
             case "a":
                 iconA = "W"
@@ -80,8 +93,10 @@
                 break;
         }
 
-        setTimeout(() => { console.log('6 seconds passed'); }, 6000);
-        newQuestion()
+        setTimeout(() => {
+            console.log('6 seconds passed');
+            newQuestion();
+        }, 6000);
 
 
         //update right/wrong DONE
@@ -95,20 +110,21 @@
 
 
     function guessedA() {
+        console.log("here")
         guessedAnswer = "a"
-        guessed()
+        guessed(guessedAnswer)
     }
     function guessedB() {
         guessedAnswer = "b"
-        guessed()
+        guessed(guessedAnswer)
     }
     function guessedC() {
         guessedAnswer = "c"
-        guessed()
+        guessed(guessedAnswer)
     }
     function guessedD() {
         guessedAnswer = "d"
-        guessed()
+        guessed(guessedAnswer)
     }
 
 

@@ -34,6 +34,7 @@
  
    
 <div class = "centered">
+
   {#if $showHome}
     <Home />
   {/if}
@@ -51,6 +52,8 @@
   {/if}
 
 
+
+  {#if !$showHome}
   <button on:click={goToAnnouncements}>
     A
   </button>
@@ -60,14 +63,16 @@
   <button on:click={goToQuiz}>
     Q
   </button>
+  {/if}
+  
 
 
 </div>
 
 <style>
   :global(body) {
-    background-color: #18181A; 
-    color: #6395EC; 
+    background-color: #DAEDC2; 
+    color: #000; 
   }
   
 
