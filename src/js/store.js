@@ -14,11 +14,21 @@ export const stopTimer = writable(false);
 
 export const name = writable("");
 
-export const activities = writable(["Paper Collection", "Donation Drive", "Daily Quiz"]);
+export const activities = writable({
+  "Jan 4, 2024": ["Paper Collection", "Donation Drive", "Daily Quiz"],
+  "Jan 5, 2024": ["Paper Collection", "Daily Quiz"],
+  "Jan 6, 2024": ["Daily Quiz", "Activity A", "Activity B", "Activity C"],
+  "Jan 7, 2024": ["Daily Quiz", "Activity C"],
+  
+});
 
+
+export const dateStr = writable("");
 
 
 export const profiles = writable([{}]);
+
+
 
 
 export function addProfile(name, point) {
@@ -42,3 +52,5 @@ export function addProfile(name, point) {
       return dictionary;
     });
   }
+
+

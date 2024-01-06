@@ -39,7 +39,7 @@
   
   
 <div>
-    {#if $profiles !== null}
+    {#if $profiles !== null && $name in $profiles}
     <ul>
         {#each keys as bee}
             {#if bee !== "0"}
