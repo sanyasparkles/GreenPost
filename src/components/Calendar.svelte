@@ -47,7 +47,7 @@
 		return today && today_year === year && today_month === month && today_day === day;
 	}
 
-    $dateStr = "Jan 5, 2024";
+    $dateStr = "Jan 11, 2024";
 
     function handleClick(day) {
         $dateStr = months[month] + " " + day + ", " + year;

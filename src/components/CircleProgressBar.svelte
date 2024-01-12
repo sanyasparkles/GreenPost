@@ -108,10 +108,11 @@
   <style>
     main {
       padding: 0rem 1rem;
+      color: #0087FF
     }
   
     main > svg {
-      width: 30%;
+      width: 20%;
       height: auto;
       display: block;
       margin: 0 auto 2rem;

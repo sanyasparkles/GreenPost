@@ -1,3 +1,72 @@
+<script>
+
+import {first, profiles, name, showHome, showAnnouncements, addProfile} from '../js/store.js'
+
+let redArrow = "https://cdn.builder.io/api/v1/image/assets/TEMP/f6284321b126ec14eb5b9e75c6c1708c2dfaaa5f57bc3cb3a55e7582845935d5?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
+let greenArrow = "https://cdn.builder.io/api/v1/image/assets/TEMP/5403e46a90ebb4dad2b51d3f457b39360c3eab021726c9692d6092f4c51aceed?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
+let arrowLink
+let count = 4
+function incCount() {
+  count++;
+  // if(count >= 10) {
+  //   count = 4;
+  // }
+  return true
+}
+
+let rank = 0
+
+
+$: {
+  if ($profiles) {
+    console.log("profiles is ", $profiles)
+  }
+}
+
+
+addProfile("Ed....", 3900, "https://cdn.discordapp.com/attachments/763258967546789890/1194127999897960448/Learn-10-Fun-Facts-About-Santa_2.png?ex=65af395d&is=659cc45d&hm=d42ba2f62188607301ed000601f43586d85fd3483e99ed4cf56d52f548dcdd5e&")
+    addProfile("Alexis".padEnd(2), 3105, "https://cdn.discordapp.com/attachments/763258967546789890/1194127999897960448/Learn-10-Fun-Facts-About-Santa_2.png?ex=65af395d&is=659cc45d&hm=d42ba2f62188607301ed000601f43586d85fd3483e99ed4cf56d52f548dcdd5e&")
+    addProfile("Taylor", 2900, "https://cdn.discordapp.com/attachments/763258967546789890/1194127999897960448/Learn-10-Fun-Facts-About-Santa_2.png?ex=65af395d&is=659cc45d&hm=d42ba2f62188607301ed000601f43586d85fd3483e99ed4cf56d52f548dcdd5e&")
+    addProfile("Travis", 1600, "https://cdn.discordapp.com/attachments/763258967546789890/1194127999897960448/Learn-10-Fun-Facts-About-Santa_2.png?ex=65af395d&is=659cc45d&hm=d42ba2f62188607301ed000601f43586d85fd3483e99ed4cf56d52f548dcdd5e&")
+    addProfile("Patrick", 1540, "https://cdn.discordapp.com/attachments/763258967546789890/1194127999897960448/Learn-10-Fun-Facts-About-Santa_2.png?ex=65af395d&is=659cc45d&hm=d42ba2f62188607301ed000601f43586d85fd3483e99ed4cf56d52f548dcdd5e&")
+
+    addProfile("Selena", 1320, "https://cdn.discordapp.com/attachments/763258967546789890/1194127999897960448/Learn-10-Fun-Facts-About-Santa_2.png?ex=65af395d&is=659cc45d&hm=d42ba2f62188607301ed000601f43586d85fd3483e99ed4cf56d52f548dcdd5e&")
+    if ($first) {
+      addProfile($name, 1300, "https://cdn.discordapp.com/attachments/763258967546789890/1194129582618574988/Elf-10.png?ex=65af3ad6&is=659cc5d6&hm=687628edd5cd8a0eeeb5a6aef621bfbd19960fc9ba318fddbe53f4fbd3fee69c&")
+      $first = false
+    }
+    else {
+      addProfile($name, $profiles[$name].info[0], "https://cdn.discordapp.com/attachments/763258967546789890/1194129582618574988/Elf-10.png?ex=65af3ad6&is=659cc5d6&hm=687628edd5cd8a0eeeb5a6aef621bfbd19960fc9ba318fddbe53f4fbd3fee69c&")
+    }
+
+    
+
+
+
+let items, keys
+$:  { if ($profiles !== null) {
+        
+        items = Object.keys($profiles).map(
+            (key) => { return [key, $profiles[key]] });
+       
+
+        items.sort(
+            (first, second) => { console.log(first[1].info[0]); return  second[1].points - first[1].points}
+            
+        );
+        
+
+        keys = items.map(
+            (e) => { return e[0] });
+    } }
+
+
+
+
+
+</script>
+
+
 <div class="div">
 
       
@@ -7,7 +76,7 @@
             srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e329ed4eec52f2c6625f1dc26a94217ad665556bfd90fc69261b3573f0751437?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
             class="sarah-image"
           />
-          <div class="sarah-text">Sarah</div>
+          <div class="text1">Sarah</div>
           <div class="number">4235</div>
         </div>
         <div class="kiara-set">
@@ -15,7 +84,7 @@
             srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/e0beabc90b4f7f219730f09026da93519148e22459ee93cad952a7d11cb764c9?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
             class="kiara-image"
           />
-          <div class="sarah-text">Kiara</div>
+          <div class="text1">Kiara</div>
           <div class="number">4578</div>
         </div>
         <div class="sanya-set">
@@ -23,28 +92,69 @@
             srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/63dc898220a3acb154ba62df251dc5fe8b19711ff0294440256e710bf67d15e6?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
             class="sanya-image"
           />
-          <div class="sanya-text">Sanya</div>
+          <div class="text1">Sanya</div>
           <div class="number">3967</div>
         </div>
       </div>
     </div>
-    <div class="div-15">
-      <div class="div-16">4</div>
-      <div class="div-17">
+
+
+<!-- leaderboard aftr top 3 -->
+
+{#if $profiles !== null && $name in $profiles}
+<ul>
+    {#each keys as bee}
+        {#if bee !== "0"}
+    
+       
+            
+    <div class="div-21">
+      <div class="div-22">{count=count+rank}</div>
+      <div class="div-23">
         <img
-          srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fb5c59910d55534984a3a3bbfcfad85c2b242a4571382757ca4c1ba748b12e97?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
-          class="img-7"
+          srcset={$profiles[bee].info[1]}
+          class="img-9"
         />
-        <div class="div-18">Ed</div>
+        <div class="div-24">{bee}</div>
       </div>
-      <div class="div-19">
-        <div class="div-20">3768</div>
+      <div class="div-25">
+        <div class="div-26">{$profiles[bee].info[0]}</div>
+        {#if bee.charAt(0) === 'T' || bee.charAt(0) === 'E'}
         <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5403e46a90ebb4dad2b51d3f457b39360c3eab021726c9692d6092f4c51aceed?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
-          class="img-8"
-        />
+        src={greenArrow}
+        class="img-10"
+      />
+
+      {:else}
+      <img
+        src={redArrow}
+        class="img-10"
+      />
+        {/if}
+        
+        
       </div>
     </div>
+      {/if}
+    {/each}
+</ul>
+{/if}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
     <div class="div-21">
       <div class="div-22">5</div>
       <div class="div-23">
@@ -96,80 +206,11 @@
         />
       </div>
     </div>
-    <div class="div-39">
-      <div class="div-40">8</div>
-      <div class="div-41">
-        <img
-          srcset="https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/8bc381c3c113ac5d6c6b5b4a07e42ef29f2514faf7bb452dc02ded6929155bfe?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
-          class="img-15"
-        />
-        <div class="div-42">Drake</div>
-      </div>
-      <div class="div-43">
-        <div class="div-44">2857</div>
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/5403e46a90ebb4dad2b51d3f457b39360c3eab021726c9692d6092f4c51aceed?apiKey=551fc44e6b1e4fa8a3003cbcc599e930&"
-          class="img-16"
-        />
-      </div>
-    </div>
- 
+    ss
+  -->
   <style>
     
-    .div-2 {
-      display: flex;
-      flex-direction: column;
-      fill: #96d644;
-      filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
-      overflow: hidden;
-      align-self: stretch;
-      position: relative;
-      display: flex;
-      min-height: 407px;
-      width: 100%;
-      padding: 24px 0 50px;
-    }
-    .img {
-      position: absolute;
-      inset: 0;
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-    }
-    .div-3 {
-      position: relative;
-      justify-content: space-between;
-      display: flex;
-      width: 100%;
-      gap: 20px;
-      padding: 0 20px;
-    }
-    .img-2 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 30px;
-      overflow: hidden;
-      align-self: center;
-      max-width: 100%;
-      margin: auto 0;
-    }
-    .div-4 {
-      color: #fff;
-      text-align: center;
-      font: 500 26px Mitr, sans-serif;
-    }
-    .img-3 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 30px;
-      overflow: hidden;
-      align-self: center;
-      max-width: 100%;
-      margin: auto 0;
-    }
+  
     .podium {
       position: relative;
       align-self: center;
@@ -195,7 +236,7 @@
       width: 102px;
       overflow: hidden;
     }
-    .sarah-text {
+    .text1 {
       color: #000000;
       font-weight: bold;
       text-align: center;
@@ -226,13 +267,6 @@
       width: 146px;
       overflow: hidden;
     }
-    .kiara-text {
-      color: #000000;
-      text-align: center;
-      z-index: 1;
-      white-space: nowrap;
-      font-weight: bold;
-    }
    
     .sanya-set {
       align-self: end;
@@ -250,80 +284,7 @@
       width: 100px;
       overflow: hidden;
     }
-    .sanya-text {
-      color: #000000;
-      text-align: center;
-      margin-top: 11px;
-      white-space: nowrap;
-      font: 500 24px Mitr, sans-serif;
-    }
-
-    .div-15 {
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      background-color: #f5f5f5;
-      align-self: center;
-      display: flex;
-      margin-top: 19px;
-      width: 100%;
-      max-width: 382px;
-      gap: 15px;
-      padding: 10px 15px;
-    }
-    .div-16 {
-      color: #000;
-      text-align: center;
-      flex-grow: 1;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-17 {
-      align-self: stretch;
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-    }
-    .img-7 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 60px;
-      overflow: hidden;
-      border-radius: 50%;
-      max-width: 100%;
-    }
-    .div-18 {
-      color: #000;
-      text-align: center;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-19 {
-      justify-content: space-between;
-      align-self: stretch;
-      display: flex;
-      gap: 10px;
-      padding: 16px 0;
-    }
-    .div-20 {
-      color: #000;
-      text-align: center;
-      font: 400 18px Mitr, sans-serif;
-    }
-    .img-8 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 15px;
-      fill: #1eb61a;
-      overflow: hidden;
-      align-self: center;
-      max-width: 100%;
-      margin: auto 0;
-    }
+  
     .div-21 {
       justify-content: center;
       align-items: center;
@@ -394,211 +355,6 @@
       max-width: 100%;
       margin: auto 0;
     }
-    .div-27 {
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      background-color: #f5f5f5;
-      align-self: center;
-      display: flex;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 382px;
-      gap: 15px;
-      padding: 10px 15px;
-    }
-    .div-28 {
-      color: #000;
-      text-align: center;
-      flex-grow: 1;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-29 {
-      align-self: stretch;
-      display: flex;
-      padding-right: 50px;
-      justify-content: space-between;
-      gap: 15px;
-    }
-    .img-11 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 60px;
-      overflow: hidden;
-      border-radius: 50%;
-      max-width: 100%;
-    }
-    .div-30 {
-      color: #000;
-      text-align: center;
-      align-self: center;
-      flex-grow: 1;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-31 {
-      justify-content: space-between;
-      align-self: stretch;
-      display: flex;
-      gap: 10px;
-      padding: 16px 0;
-    }
-    .div-32 {
-      color: #000;
-      text-align: center;
-      font: 400 18px Mitr, sans-serif;
-    }
-    .img-12 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 15px;
-      fill: #1eb61a;
-      overflow: hidden;
-      align-self: center;
-      max-width: 100%;
-      margin: auto 0;
-    }
-    .div-33 {
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      background-color: #f5f5f5;
-      align-self: center;
-      display: flex;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 382px;
-      gap: 15px;
-      padding: 10px 15px;
-    }
-    .div-34 {
-      color: #000;
-      text-align: center;
-      flex-grow: 1;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-35 {
-      align-self: stretch;
-      display: flex;
-      padding-right: 38px;
-      justify-content: space-between;
-      gap: 15px;
-    }
-    .img-13 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 60px;
-      overflow: hidden;
-      border-radius: 50%;
-      max-width: 100%;
-    }
-    .div-36 {
-      color: #000;
-      text-align: center;
-      align-self: center;
-      flex-grow: 1;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-37 {
-      justify-content: space-between;
-      align-self: stretch;
-      display: flex;
-      gap: 10px;
-      padding: 16px 0;
-    }
-    .div-38 {
-      color: #000;
-      text-align: center;
-      font: 400 18px Mitr, sans-serif;
-    }
-    .img-14 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 15px;
-      fill: #f61b35;
-      overflow: hidden;
-      align-self: center;
-      max-width: 100%;
-      margin: auto 0;
-    }
-    .div-39 {
-      justify-content: center;
-      align-items: center;
-      border-radius: 10px;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      background-color: #f5f5f5;
-      align-self: center;
-      display: flex;
-      margin-top: 20px;
-      width: 100%;
-      max-width: 382px;
-      gap: 15px;
-      padding: 10px 15px;
-    }
-    .div-40 {
-      color: #000;
-      text-align: center;
-      flex-grow: 1;
-      white-space: nowrap;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-41 {
-      align-self: stretch;
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-    }
-    .img-15 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 60px;
-      overflow: hidden;
-      border-radius: 50%;
-      max-width: 100%;
-    }
-    .div-42 {
-      color: #000;
-      text-align: center;
-      margin: auto 0;
-      font: 400 20px Mitr, sans-serif;
-    }
-    .div-43 {
-      justify-content: space-between;
-      align-self: stretch;
-      display: flex;
-      gap: 10px;
-      padding: 16px 0;
-    }
-    .div-44 {
-      color: #000;
-      text-align: center;
-      font: 400 18px Mitr, sans-serif;
-    }
-    .img-16 {
-      aspect-ratio: 1;
-      object-fit: contain;
-      object-position: center;
-      width: 15px;
-      fill: #1eb61a;
-      overflow: hidden;
-      align-self: center;
-      max-width: 100%;
-      margin: auto 0;
-    }
+   
   </style>
   

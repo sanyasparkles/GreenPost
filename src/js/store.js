@@ -5,6 +5,7 @@ export const showAnnouncements = writable(false);
 export const showLeaderboard = writable(false);
 export const showQuiz = writable(false);
 
+export const first = writable(true);
 
 export const quizOver = writable(false);
 
@@ -31,9 +32,9 @@ export const profiles = writable([{}]);
 
 
 
-export function addProfile(name, point) {
+export function addProfile(name, point, link) {
     profiles.update(dictionary => {
-      dictionary[name] = { points: point };
+      dictionary[name] = { info: [point, link]};
       return dictionary;
     });
   }

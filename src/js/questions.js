@@ -8,26 +8,7 @@ export const questions = [
         correct: "d"
 
     },
-
-    {
-        question: 'what is the answer????????',
-        a: "aajssf;a",
-        b: "bjsdlf",
-        c: "csddfsf",
-        d: "dsdfdsf",
-        correct: "c"
-    },
-
-    {
-        question: 'whats sarahs last name',
-        a: "hong",
-        b: "ha",
-        c: "hu",
-        d: "hoo",
-        correct: "a"
-    },
-
-
+    
     {
         question: 'What percentage of global freshwater is used by agriculture?',
         a: "50",
